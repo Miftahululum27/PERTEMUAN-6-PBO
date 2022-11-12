@@ -1,0 +1,291 @@
+Bangun_Datar
+Bangun_Datar.java
+package tugas6.Bangun_Datar;
+public abstract class BangunDatar {
+ String warna;
+ String getName(){
+ return warna;
+ }
+ void setWarna(String warna){
+ this.warna=warna;
+ }
+
+ abstract float getLuas();
+}
+Lingkaran.java
+Package tugas6.Bangun_Datar;
+public class Lingkaran extends BangunDatar{
+ float jari_jari;
+ public Lingkaran(float jari_jari){
+ this.jari_jari=jari_jari;
+ }
+ @Override
+ float getLuas() {
+ return (float)Math.PI*jari_jari*jari_jari;
+ }
+}
+Main.java
+Package tugas6.Bangun_Datar;
+Public class Main {
+ Public static void main(String[] args) {
+ BangunDatar segitiga=new SegiTiga(12, 20);
+ BangunDatar lingkaran=new Lingkaran(60);
+ System.out.println(“Luas dari bangun datar segitiga : “+segitiga.getLuas());
+ System.out.println(“Luas dari bangun datar luangkaran : “+lingkaran.getLuas());
+ }
+}
+SegiTiga.java
+Package tugas6.Bangun_Datar;
+Public class SegiTiga extends BangunDatar{
+ Private float alas;
+ Private float tinggi;
+ Public SegiTiga(float alas, float tinggi){
+ This.alas=alas;
+ This.tinggi=tinggi;
+ }
+ @Override
+ Float getLuas(){
+ Return (float)0.5*alas*tinggi;
+ }
+}
+Laptopku
+Laptop.java
+Package tugas6.Laptopku;
+Public interface Laptop {
+ Int MAX_VOL=100;
+ Int MIN_VOL=0;
+ Void powerOn();
+ Void powerOff();
+ Void volumeUp();
+ Void volumeDown();
+}
+LaptipUser.java
+Package tugas6.Laptopku;
+Public class LaptopUser {
+ Private Laptop laptop;
+ Public LaptopUser(Laptop laptop){
+ This.laptop=laptop;
+ }
+ Void turnOnLaptop(){
+ This.laptop.powerOn();
+ }
+ Void turnOffLaptop(){
+ This.laptop.powerOff();
+ }
+ Void makeLaptopLouder(){
+ This.laptop.volumeUp();
+ }
+ Void makeLaptopSilence(){
+ This.laptop.volumeDown();
+ }
+}
+Lenovo.java
+Package tugas6.Laptopku;
+Public class Lenovo implements Laptop{
+ Private int volume;
+ Boolean is_power_on;
+ Public Lenovo(){
+ This.volume=50;
+ }
+ @Override
+ Public void powerOn(){
+ Is_power_on=true;
+ System.out.println(“Laptop is On”);
+ System.out.println(“Lenovo ThinkPad”);
+ }
+ @Override
+ Public void powerOff(){
+ Is_power_on=false;
+ System.out.println(“Shutdown in process ...”);
+ }
+ @Override
+ Public void volumeUp(){
+ If(is_power_on){
+ If(this.volume==MAX_VOL){
+ System.out.println(“Volume is Full “);
+ }
+ Else{
+ This.volume+=10;
+ System.out.println(“Volume is : “+getVolume());
+ }
+ }
+ }
+ @Override
+ Public void volumeDown(){
+ If(is_power_on){
+ If(this.volume==MIN_VOL){
+ System.out.println(“Volume is 0%”);
+ }
+ Else{
+ This.volume-=10;
+ System.out.println(“Volume is : “+getVolume());
+ }
+ }
+ }
+ Public int getVolume(){
+ Return this.volume;
+ }
+}
+MacBook.java
+Package tugas6.Laptopku;
+Public class MacBook implements Laptop{
+ Private int volume;
+ Boolean is_power_on;
+ Public MacBook(){
+ This.volume=50;
+ }
+ @Override
+ Public void powerOn(){
+ Is_power_on=true;
+ System.out.println(“Laptop is On”);
+ System.out.println(“MacBook Air M1”);
+ }
+ @Override
+ Public void powerOff(){
+ Is_power_on=false;
+ System.out.println(“Shutdown in process ...”);
+ }
+ @Override
+ Public void volumeUp(){
+ If(is_power_on){
+ If(this.volume==MAX_VOL){
+ System.out.println(“Volume is Full “);
+ }
+ Else{
+ This.volume+=10;
+ System.out.println(“Volume is : “+getVolume());
+ }
+ }
+ }
+ @Override
+ Public void volumeDown(){
+ If(is_power_on){
+ If(this.volume==MIN_VOL){
+ System.out.println(“Volume is 0%”);
+ }
+ Else{
+ This.volume-=10;
+ System.out.println(“Volume is : “+getVolume());
+ }
+ }
+ }
+ Public int getVolume(){
+ Return this.volume;
+ }
+}
+Toshiba.java
+Package tugas6.Laptopku;
+Public class Toshiba implements Laptop{
+ Private int volume;
+ Boolean is_power_on;
+ Public Toshiba(){
+ This.volume=50;
+ }
+ @Override
+ Public void powerOn(){
+ Is_power_on=true;
+ System.out.println(“Laptop is On”);
+ System.out.println(“Toshiba Satellite”);
+ }
+ @Override
+ Public void powerOff(){
+ Is_power_on=false;
+ System.out.println(“Shutdown in process ...”);
+ }
+ @Override
+ Public void volumeUp(){
+ If(is_power_on){
+ If(this.volume==MAX_VOL){
+ System.out.println(“Volume is Full “);
+ }
+ Else{
+ This.volume+=10;
+ System.out.println(“Volume is : “+getVolume());
+ }
+ }
+ }
+ @Override
+ Public void volumeDown(){
+ If(is_power_on){
+ If(this.volume==MIN_VOL){
+ System.out.println(“Volume is 0%”);
+ }
+ Else{
+ This.volume-=10;
+ System.out.println(“Volume is : “+getVolume());
+ }
+ }
+ }
+ Public int getVolume(){
+ Return this.volume;
+ }
+}
+Main.java
+Package tugas 6.Laptopku;
+Import java.util.Scanner;
+Import java.util.ArrayList;
+Public class Main {
+ Static void batas(){
+ System.out.println(“===========================================”);
+ }
+ Static void pilihLaptop(){
+ System.out.println(“1. Lenovo”);
+ System.out.println(“2. Toshiba”);
+ System.out.println(“3. MacBook”);
+ System.out.println(“”);
+ }
+ Static void menuLaptop(){
+ System.out.println(“1. Input ‘ON’ untuk menyalakan laptop”);
+ System.out.println(“2. Input ‘OFF’ untuk mematikan laptop”);
+ System.out.println(“3. Input ‘UP’ untuk menambah volume”);
+ System.out.println(“4. Input ‘DOWN’ untuk mengurangi volume”);
+ }
+ Public static void main(String[] args) {
+ Boolean bool=true;
+ Scanner sc=new Scanner(System.in);
+ ArrayList<Laptop> laptop = new ArrayList<>();
+ Lenovo lenovo=new Lenovo();
+ Toshiba toshiba=new Toshiba();
+ MacBook macbook=new MacBook();
+ System.out.println(“\n\tMerk Laptop”);
+ Batas();
+ pilihLaptop();
+ System.out.print(“Pilih jenis laptop : “);
+ Int noJenisLaptop=sc.nextInt();
+ Switch(noJenisLaptop){
+ Case 1:
+ Laptop.add(lenovo);
+ Break;
+ Case 2 :
+ Laptop.add(toshiba);
+ Break;
+ Case 3 :
+ Laptop.add(macbook);
+ }
+ While(bool){
+ System.out.println(“\n\t Menu”);
+ Batas();
+ menuLaptop();
+ System.out.print(“Input : “);
+ String noMenu=sc.next();
+ Switch(noMenu){
+ Case “ON”:
+ Laptop.get(0).powerOn();
+ Break;
+ Case “OFF”:
+ Laptop.get(0).powerOff();
+ Bool=false;
+ Break;
+ Case “UP”:
+ Laptop.get(0).volumeUp();
+ Break;
+ Case “DOWN”:
+ Laptop.get(0).volumeDown();
+ Break;
+ Default:
+ System.out.println(“PILIH SESUAI INSTRUKSI DI MENU -_-“);
+ Break;
+ }
+ }
+ }
+}
